@@ -53,13 +53,28 @@ class _MyCustomFormState extends State<MyCustomForm> {
             context: context,
             builder: (context) {
               return AlertDialog(
-                content: Text(myController.text),
+                title: Text(myController.text),
+                content: const Text("Test1"),
+                actions: [
+                  ElevatedButton(
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.blue,
+                      ),
+                      child: const Text("OK")),
+                ],
               );
             },
           );
         },
         tooltip: 'Mostra el valor!',
-        child: const Icon(Icons.text_fields),
+        backgroundColor: Colors.green,
+        child: const Icon(
+          Icons.text_fields,
+          color: Colors.red,
+        ),
       ),
     );
   }
