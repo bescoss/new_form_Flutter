@@ -10,7 +10,7 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      title: 'Recuperar el valor d' 'un camp de text',
+      title: 'Recuperar el valor d\'un camp de text',
       home: MyCustomForm(),
     );
   }
@@ -33,14 +33,34 @@ class _MyCustomFormState extends State<MyCustomForm> {
 
   @override
   Widget build(BuildContext context) {
-    return scaffold(
+    return Scaffold(
       appBar: AppBar(
-        
-      )
+        backgroundColor: Colors.blue,
+        title: const Text(
+          'Recuperar el valor d\' un camp de text',
+          style: TextStyle(color: Colors.white),
+        ),
+      ),
       body: Padding(
-
-      )
-      floatingActionButton: FloatingActionButton()
-    )
+        padding: const EdgeInsets.all(16.0),
+        child: TextField(
+          controller: myController,
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          showDialog(
+            context: context,
+            builder: (context) {
+              return AlertDialog(
+                content: Text(myController.text),
+              );
+            },
+          );
+        },
+        tooltip: 'Mostra el valor!',
+        child: const Icon(Icons.text_fields),
+      ),
+    );
   }
 }
